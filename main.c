@@ -1,7 +1,7 @@
 /**
     Group #: 08  (2 digits)
 
-    LASTNAME1, FIRSTNAME1  SECTION
+    GAN, KRISTINE CLAIRE    S09
     LASTNAME2, FIRSTNAME2  SECTION
     LASTNAME3, FIRSTNAME3  SECTION 
 
@@ -20,26 +20,27 @@
 
 #include "graph.c"
 
+#define FILENAME	"G.txt"
+
 int main(){
     FILE* fp;
     int numVer;
 
     //Open the given file
-    fp=fopen("G.txt", "r");
-    fscanf(fp,"%d",&numVer);
+    fp=fopen(FILENAME, "r");
+    fscanf(fp,"%d ",&numVer);
     fclose(fp);
     
     AdjacencyList a[numVer];
-    readSNSFile("G.text",a,numVer);
+    readSNSFile(FILENAME,a,numVer);
 
     //Test print results
     for(int i=0;i<numVer;i++){
-        printf("%s",a[i].name);
+        printf("%s - ",a[i].name);
         for(int j=0;j<a[i].numID;j++)
             printf("%s ",a[i].adjacentIDs[j]);
-        printf("\n");
+        printf("%d\n",a[i].numID);
     }
 
-    
     return 0;
 }
