@@ -1,8 +1,5 @@
 /**
-
-    >> Encode your group number (2 digits) and last names, first names and sections of group members.  Encode the purpose of this file.
-
-    Group #: 00  (2 digits)
+    Group #: 08  (2 digits)
 
     LASTNAME1, FIRSTNAME1  SECTION
     LASTNAME2, FIRSTNAME2  SECTION
@@ -18,39 +15,16 @@
 
 */
 
-#include <stdio.h>
-#include <stdlib.h>
+#ifndef DEFS_H // Include this to prevent redefinition error
+#define DEFS_H // Include this to prevent redefinition error
 
-// include your own stack header file
+#define MAX_NUM_VERTICES    20
 
-/*
-    EACH FUNCTION DEFINITION MUST BE PRECEDED BY A INLINE DOCUMENTATION CONTAINING THE FOLLOWING:
+typedef char ID[8];
+typedef struct{
+    ID name;
+    int numID;
+    ID adjacentIDs[MAX_NUM_VERTICES];
+} AdjacencyList;
 
-    a. Name of Programmer(s)
-    b. Name of Tester(s) -- for an unbiased black box testing, the tester should NOT be the same person as the programmer.
-    c. Code Type -- indicate EXPLICITLY if the code is one of the following: 100% Human Generated code, 100% AI Generated code
-       or a modified AI generated code.  If it is a modified AI generated code, indicate explicitly which lines were 
-       modified and the reason why a line of code had to be modified.
-    d. Purpose -- indicate the purpose of the function
-    e. Return -- indicate what will be returned (type None for void functions)
-    f. Parameters -- indicate the nature of the parameters
-
-    An example is shown below.  
-
-    Remove the Sample() function in your own C source code.
-*/
-
-
-/*
-    a. Name of Programmer(s):  Juan de la Cruz, Anna Santos
-    b. Name of Tester(s)    :  Ichiro Makino
-    c. Code Type -- 100% Human Generated 
-    d. Purpose: this function will ....
-    e. Return: None
-    f. Parameters: x is the ...    
-*/
-void Sample(int x)
-{
-    // document also the body of the function
-    printf("Hello %d.\n", x);
-}
+#endif //DEFS_H; //Include this to prevent redefinition error
