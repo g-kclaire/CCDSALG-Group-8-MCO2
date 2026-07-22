@@ -1,10 +1,7 @@
 /**
+    Group #: 08  (2 digits)
 
-    >> Encode your group number (2 digits) and last names, first names and sections of group members.  Encode the purpose of this file.
-
-    Group #: 00  (2 digits)
-
-    LASTNAME1, FIRSTNAME1  SECTION
+    GAN, KRISTINE CLAIRE    S09
     LASTNAME2, FIRSTNAME2  SECTION
     LASTNAME3, FIRSTNAME3  SECTION 
 
@@ -20,37 +17,37 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
-// include your own stack header file
-
-/*
-    EACH FUNCTION DEFINITION MUST BE PRECEDED BY A INLINE DOCUMENTATION CONTAINING THE FOLLOWING:
-
-    a. Name of Programmer(s)
-    b. Name of Tester(s) -- for an unbiased black box testing, the tester should NOT be the same person as the programmer.
-    c. Code Type -- indicate EXPLICITLY if the code is one of the following: 100% Human Generated code, 100% AI Generated code
-       or a modified AI generated code.  If it is a modified AI generated code, indicate explicitly which lines were 
-       modified and the reason why a line of code had to be modified.
-    d. Purpose -- indicate the purpose of the function
-    e. Return -- indicate what will be returned (type None for void functions)
-    f. Parameters -- indicate the nature of the parameters
-
-    An example is shown below.  
-
-    Remove the Sample() function in your own C source code.
-*/
-
+#include "graph.h"
 
 /*
-    a. Name of Programmer(s):  Juan de la Cruz, Anna Santos
-    b. Name of Tester(s)    :  Ichiro Makino
+    a. Name of Programmer(s):  
+    b. Name of Tester(s)    :  
     c. Code Type -- 100% Human Generated 
     d. Purpose: this function will ....
-    e. Return: None
-    f. Parameters: x is the ...    
+    e. Return: 
+    f. Parameters:    
 */
-void Sample(int x)
+void readSNSFile(char fileName[], AdjacencyList a[], int numVer)
 {
-    // document also the body of the function
-    printf("Hello %d.\n", x);
+    FILE *fp;
+    int i,j;
+
+    //Open the given file
+    fp=fopen(fileName, "r");
+
+    //Read info from file into array of adjacency lists
+    for(i=0;i<numVer;i++){
+        //Read name of current adjacency list owner
+        fscanf(fp,"%s",a[i].name);
+        int j=0;
+        do{
+            (fscanf(fp,"%s",a[i].adjacentIDs[j]));
+            j++;
+        }while(strcmp(a[i].adjacentIDs[j],"-1")!=0);
+        a[i].numID = j-1;
+    }
+    //Close the file
+    fclose(fp);
 }
