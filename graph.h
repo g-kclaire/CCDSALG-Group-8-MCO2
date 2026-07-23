@@ -29,4 +29,11 @@ typedef struct{
     ID adjacentIDs[MAX_NUM_VERTICES];
 } AdjacencyList;
 
+void readSNSFile(char fileName[], AdjacencyList a[], FILE *fp, int *numVer);
+void getFilename(Filename fntxt, Filename *fn);
+void outputTXT1(Filename fn, AdjacencyList a[], int numVer);
+void outputTXT2(Filename fn, AdjacencyList a[], int numVer);
+void outputTXT3(Filename fn, AdjacencyList a[], int numVer);
+void outputTXT4(Filename fn, AdjacencyList a[], int numVer);
+
 #endif //DEFS_H; //Include this to prevent redefinition error
