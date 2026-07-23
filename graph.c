@@ -70,6 +70,37 @@ void getFilename(Filename fntxt, Filename *fn){
 }
 
 /*
+    a. Name of Programmer(s):  Monica Mesa
+    b. Name of Tester(s)    :  
+    c. Code Type -- 100% Human Generated 
+    d. Purpose: This function will ...
+    e. Return: 
+    f. Parameters: @fn is used for creating the output#3 filename, @a is the array of
+    adjacency lists, and @numVer is the number of vertices in the file
+*/
+void outputTXT1(Filename fn, AdjacencyList a[], int numVer){
+    FILE* new1;
+    Filename output1fn;
+    /*--USE THESE IF YOU NEED TO REARRANGE/SORT THE ADJACENCY LIST ARRAY, DELETE IF NOT*/
+    // AdjacencyList output1List[numVer]; 
+    // /*Make a duplicate of the adjacency list array parameter*/
+    // for(int i=0;i<numVer;i++)
+    // 	output1List[i] = a[i];
+
+    //Generate output#1 name format
+    strcpy(output1fn,fn);
+    strcat(output1fn,"-SET.TXT");
+
+    //Open or create new text file for output file#1
+    new1=fopen(output1fn,"w");
+
+    /*--ADD FUNC CODES HERE*/
+
+    //Close file pointer
+    fclose(new1);
+}
+
+/*
     a. Name of Programmer(s):  Kristine Claire Gan
     b. Name of Tester(s)    :  
     c. Code Type -- 100% Human Generated 
@@ -147,4 +178,35 @@ void outputTXT3(Filename fn, AdjacencyList a[], int numVer){
 
     //Close file pointer
     fclose(new3);
+}
+
+/*
+    a. Name of Programmer(s):  Nicolai Paolo Villarin
+    b. Name of Tester(s)    :  
+    c. Code Type -- 100% Human Generated 
+    d. Purpose: This function will ...
+    e. Return: 
+    f. Parameters: @fn is used for creating the output#3 filename, @a is the array of
+    adjacency lists, and @numVer is the number of vertices in the file
+*/
+void outputTXT4(Filename fn, AdjacencyList a[], int numVer){
+    FILE* new4;
+    Filename output4fn;
+    /*--USE THESE IF YOU NEED TO REARRANGE/SORT THE ADJACENCY LIST ARRAY, DELETE IF NOT*/
+    // AdjacencyList output4List[numVer]; 
+    // //Make a duplicate of the adjacency list array parameter
+    // for(int i=0;i<numVer;i++)
+    // 	output4List[i] = a[i];
+
+    //Generate output#1 name format
+    strcpy(output4fn,fn);
+    strcat(output4fn,"-MATRIX.TXT");
+
+    //Open or create new text file for output file#4
+    new4=fopen(output4fn,"w");
+
+    /*--ADD FUNC CODES HERE*/
+
+    //Close file pointer
+    fclose(new4);
 }
