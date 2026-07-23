@@ -47,6 +47,7 @@ int main(){
     strcat(fn,"\0");
     
     outputTXT2(fn,a,numVer);
+    outputTXT3(fn,a,numVer);
 
     //Test print results
     for(int i=0;i<numVer;i++){
