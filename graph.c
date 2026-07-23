@@ -100,3 +100,35 @@ void outputTXT2(Filename fn, AdjacencyList a[], int numVer){
     fclose(new2);
 }
 
+/*
+    a. Name of Programmer(s):  Kristine Claire Gan
+    b. Name of Tester(s)    :  
+    c. Code Type -- 100% Human Generated 
+    d. Purpose: This function will generate the expected output for the third output file.
+    It prints out the adjacency list per vertex.
+    e. Return: none
+    f. Parameters: @fn is used for creating the output#3 filename, @a is the array of
+    adjacency lists, and @numVer is the number of vertices in the file
+*/
+void outputTXT3(Filename fn, AdjacencyList a[], int numVer){
+    FILE* new3;
+    Filename output3fn;
+
+    //Generate output#3 name format
+    strcpy(output3fn,fn);
+    strcat(output3fn,"-LIST.TXT");
+
+    //Open or create new text file for output file#3
+    new3=fopen(output3fn,"w");
+
+    //Print adjacency list in output file#3
+    for(int i=0;i<numVer;i++){
+        fprintf(new3,"%s->",a[i].name);
+        for(int j=0;j<a[i].numID;j++)
+            fprintf(new3,"%s->",a[i].adjacentIDs[j]);
+        fprintf(new3,"\\\n");
+    }
+
+    //Close file pointer
+    fclose(new3);
+}
