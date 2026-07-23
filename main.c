@@ -20,19 +20,26 @@
 
 #include "graph.c"
 
-#define FILENAME	"G.txt"
-
 int main(){
     FILE* fp;
+    Filename fn;
     int numVer;
 
-    //Open the given file
-    fp=fopen(FILENAME, "r");
+    /*Get user input for filename of the input, and make sure inputted filename is exists.
+    Terminate program if it does not. */
+	printf("Input filename (eg. <FILENAME>.txt): ");
+	scanf("%s",fn);
+    if((fp=fopen(fn,"r"))==0){
+        printf("File %s not found.\n",fn);
+        return 0;
+    }
+
+    //Get the number of vertices
     fscanf(fp,"%d ",&numVer);
-    fclose(fp);
     
+    //Create array of adjacency lists and assign ID names to it
     AdjacencyList a[numVer];
-    readSNSFile(FILENAME,a,numVer);
+    readSNSFile(fn,a,fp,&numVer);
 
     //Test print results
     for(int i=0;i<numVer;i++){
@@ -42,5 +49,7 @@ int main(){
         printf("%d\n",a[i].numID);
     }
 
+    //Close the file
+    fclose(fp);
     return 0;
 }
