@@ -57,6 +57,22 @@ void readSNSFile(char fileName[], AdjacencyList a[], FILE *fp, int *numVer) {
     a. Name of Programmer(s):  Kristine Claire Gan
     b. Name of Tester(s)    :  
     c. Code Type -- 100% Human Generated 
+    d. Purpose: This function will get the name of the file w/o ".txt" based on user input.
+    e. Return: none
+    f. Parameters: @fntxt is the inputted filename with ".txt", and @*fn is for storing
+    the actual filename itself
+*/
+void getFilename(Filename fntxt, Filename *fn){
+
+    //Get name of file without ".txt"
+    strncpy(fn,fntxt,FILE_NAME_SIZE);
+    strcat(fn,"\0");
+}
+
+/*
+    a. Name of Programmer(s):  Kristine Claire Gan
+    b. Name of Tester(s)    :  
+    c. Code Type -- 100% Human Generated 
     d. Purpose: This function will generate the expected output for the second output file.
     It sorts the list of vertices based on alphabetical order, and shows the number of
     adjacent IDs each vertex is connected to.
