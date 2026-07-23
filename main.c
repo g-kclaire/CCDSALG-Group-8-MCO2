@@ -38,14 +38,14 @@ int main(){
     //Get the number of vertices
     fscanf(fp,"%d ",&numVer);
     
-    //Create array of adjacency lists and assign ID names to it
+    //Create array of adjacency lists with size of @numVer, and assign ID names to it
     AdjacencyList a[numVer];
     readSNSFile(fntxt,a,fp,&numVer);
-
-    //Get name of file without ".txt"
-    strncpy(fn,fntxt,FILE_NAME_SIZE);
-    strcat(fn,"\0");
     
+    //Call func to get filename w/o ".txt"
+    getFilename(fntxt,&fn);
+
+    //Call output file funcs
     outputTXT2(fn,a,numVer);
     outputTXT3(fn,a,numVer);
 
