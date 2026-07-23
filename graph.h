@@ -19,6 +19,7 @@
 #define DEFS_H // Include this to prevent redefinition error
 
 #define MAX_NUM_VERTICES    20
+#define FILE_NAME_SIZE		1
 
 typedef char ID[8];
 typedef char Filename[30];
