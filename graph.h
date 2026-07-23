@@ -1,7 +1,7 @@
 /**
     Group #: 08  (2 digits)
 
-    LASTNAME1, FIRSTNAME1  SECTION
+    GAN, KRISTINE CLAIRE    S09
     LASTNAME2, FIRSTNAME2  SECTION
     LASTNAME3, FIRSTNAME3  SECTION 
 
@@ -21,6 +21,7 @@
 #define MAX_NUM_VERTICES    20
 
 typedef char ID[8];
+typedef char Filename[5];
 typedef struct{
     ID name;
     int numID;
