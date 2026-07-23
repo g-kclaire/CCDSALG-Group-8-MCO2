@@ -50,3 +50,23 @@ void readSNSFile(char fileName[], AdjacencyList a[], FILE *fp, int *numVer)
         a[i].numID = j;
     }
 }
+
+/*
+    a. Name of Programmer(s):  Kristine Claire Gan
+    b. Name of Tester(s)    :  
+    c. Code Type -- 100% Human Generated 
+    d. Purpose: This function will read in the IDs and their respective list of
+    adjacent IDs written in the given text file.
+    e. Return: none
+    f. Parameters: fileName[] is the string containing the name of the file to read
+    inputs from, a[] is the array of adjacency lists for each ID, and numVer is the
+    number of vertices in the given file
+*/
+void outputTXT2(Filename fn){
+    // FILE* new2;
+    Filename output2fn;
+    strcpy(output2fn,fn);
+    strcat(output2fn,"-DEGREE.TXT");
+    printf("\nTEST : %s\n",output2fn);
+    // new2=fopen(output2fn,"w");
+}
