@@ -65,8 +65,8 @@ void readSNSFile(char fileName[], AdjacencyList a[], FILE *fp, int *numVer) {
 void getFilename(Filename fntxt, Filename *fn){
 
     //Get name of file without ".txt"
-    strncpy(fn,fntxt,FILE_NAME_SIZE);
-    strcat(fn,"\0");
+    strncpy(*fn,fntxt,FILE_NAME_SIZE);
+    strcat(*fn,"\0");
 }
 
 /*
