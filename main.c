@@ -17,20 +17,21 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include "graph.c"
 
 int main(){
     FILE* fp;
-    Filename fn;
+    Filename fntxt,fn;
     int numVer;
 
     /*Get user input for filename of the input, and make sure inputted filename is exists.
     Terminate program if it does not. */
 	printf("Input filename (eg. <FILENAME>.txt): ");
-	scanf("%s",fn);
-    if((fp=fopen(fn,"r"))==0){
-        printf("File %s not found.\n",fn);
+	scanf("%s",fntxt);
+    if((fp=fopen(fntxt,"r"))==0){
+        printf("File %s not found.\n",fntxt);
         return 0;
     }
 
@@ -39,7 +40,11 @@ int main(){
     
     //Create array of adjacency lists and assign ID names to it
     AdjacencyList a[numVer];
-    readSNSFile(fn,a,fp,&numVer);
+    readSNSFile(fntxt,a,fp,&numVer);
+
+    //Get name of file without ".txt"
+    strncpy(fn,fntxt,FILE_NAME_SIZE);
+    strcat(fn,"\0");
 
     //Test print results
     for(int i=0;i<numVer;i++){
@@ -48,8 +53,9 @@ int main(){
             printf("%s ",a[i].adjacentIDs[j]);
         printf("%d\n",a[i].numID);
     }
-
     //Close the file
     fclose(fp);
+    
+    outputTXT2(fn);
     return 0;
 }
