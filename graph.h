@@ -21,7 +21,7 @@
 #define MAX_NUM_VERTICES    20
 
 typedef char ID[8];
-typedef char Filename[5];
+typedef char Filename[30];
 typedef struct{
     ID name;
     int numID;
