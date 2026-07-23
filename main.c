@@ -45,6 +45,8 @@ int main(){
     //Get name of file without ".txt"
     strncpy(fn,fntxt,FILE_NAME_SIZE);
     strcat(fn,"\0");
+    
+    outputTXT2(fn,a,numVer);
 
     //Test print results
     for(int i=0;i<numVer;i++){
@@ -55,7 +57,5 @@ int main(){
     }
     //Close the file
     fclose(fp);
-    
-    outputTXT2(fn);
     return 0;
 }
