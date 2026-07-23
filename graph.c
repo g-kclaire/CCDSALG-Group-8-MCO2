@@ -32,26 +32,21 @@
     inputs from, a[] is the array of adjacency lists for each ID, and numVer is the
     number of vertices in the given file
 */
-void readSNSFile(char fileName[], AdjacencyList a[], int numVer)
+void readSNSFile(char fileName[], AdjacencyList a[], FILE *fp, int *numVer)
 {
-    FILE *fp;
-    int i, temp;
-
-    //Open the given file
-    fp=fopen(fileName, "r");
-    fscanf(fp,"%d",&temp);
+    //Scan the current number of vertices
+    fscanf(fp,"%d",numVer);
 
     //Read info from file into array of adjacency lists
-    for(i=0;i<numVer;i++){
+    for(int i=0;i<*numVer;i++){
         //Read name of current adjacency list owner
         fscanf(fp,"%s ",a[i].name);
         int j=0;
+        //Read list of IDs into the current adjacency list array
         while(fscanf(fp,"%s",a[i].adjacentIDs[j])==1 && strcmp(a[i].adjacentIDs[j],"-1")){
             j++;
-            printf("test %d.%d\n",i,j);
         }
+        //Assign current ID tally to the variable of the number of IDs
         a[i].numID = j;
     }
-    //Close the file
-    fclose(fp);
 }
