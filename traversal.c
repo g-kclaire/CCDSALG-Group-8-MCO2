@@ -1,10 +1,7 @@
 /**
+    Group #: 08  (2 digits)
 
-    >> Encode your group number (2 digits) and last names, first names and sections of group members.  Encode the purpose of this file.
-
-    Group #: 00  (2 digits)
-
-    LASTNAME1, FIRSTNAME1  SECTION
+    GAN, KRISTINE CLAIRE    S09
     LASTNAME2, FIRSTNAME2  SECTION
     LASTNAME3, FIRSTNAME3  SECTION 
 
@@ -20,37 +17,76 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
-// include your own stack header file
-
-/*
-    EACH FUNCTION DEFINITION MUST BE PRECEDED BY A INLINE DOCUMENTATION CONTAINING THE FOLLOWING:
-
-    a. Name of Programmer(s)
-    b. Name of Tester(s) -- for an unbiased black box testing, the tester should NOT be the same person as the programmer.
-    c. Code Type -- indicate EXPLICITLY if the code is one of the following: 100% Human Generated code, 100% AI Generated code
-       or a modified AI generated code.  If it is a modified AI generated code, indicate explicitly which lines were 
-       modified and the reason why a line of code had to be modified.
-    d. Purpose -- indicate the purpose of the function
-    e. Return -- indicate what will be returned (type None for void functions)
-    f. Parameters -- indicate the nature of the parameters
-
-    An example is shown below.  
-
-    Remove the Sample() function in your own C source code.
-*/
-
+#include "graph.c"
 
 /*
-    a. Name of Programmer(s):  Juan de la Cruz, Anna Santos
-    b. Name of Tester(s)    :  Ichiro Makino
+    a. Name of Programmer(s):  Kristine Claire Gan
+    b. Name of Tester(s)    :  
     c. Code Type -- 100% Human Generated 
-    d. Purpose: this function will ....
-    e. Return: None
-    f. Parameters: x is the ...    
+    d. Purpose: 
+    f. Parameters: @fn is used for creating the output#5 filename, @a is the array of
+    adjacency lists, and @numVer is the number of vertices in the file
 */
-void Sample(int x)
-{
-    // document also the body of the function
-    printf("Hello %d.\n", x);
+void outputTXT5(Filename fn, AdjacencyList a[], int numVer) {
+    FILE* new5;
+    Filename output5fn;
+    AdjacencyList output5List[numVer];
+    int curVer;
+
+    //Make a duplicate of the adjacency list array parameter
+    // for(int i=0;i<numVer;i++)
+    // 	output5List[i] = a[i];
+
+    //Generate output#5 name format
+    strcpy(output5fn,fn);
+    strcat(output5fn,"-BFS.TXT");
+
+    //Open or create new text file for output file#3
+    new5=fopen(output5fn,"w");
+
+
+
+    //Close file pointer
+    fclose(new5);
+}
+
+/*
+    a. Name of Programmer(s):  Kristine Claire Gan
+    b. Name of Tester(s)    :  
+    c. Code Type -- 100% Human Generated 
+    d. Purpose: 
+    f. Parameters: 
+*/
+void helperTXT5(AdjacencyList og[], AdjacencyList bfs[], int *curSize, int index, int numVer){
+
+    //Check if the current size of the BFS arr is equivalent to the size of the original arr
+    if(*curSize!=numVer-1){
+        int notFound;
+
+        //Assign the first adjacent list from the original array to the BFS array when BFS array is empty
+        if(bfs==NULL){
+            bfs[*curSize] = og[index];
+            *curSize++; //Increment BFS arr size counter
+        }
+
+        //Organize list based on alphabetical order
+        selsortList(bfs,numVer);
+
+        //Check if an ID in the adjacency list already exists in the BFS arr
+        for(int i=0;i<bfs[*curSize].numID;i++) {
+            notFound=1;
+            //Compare current ID with the ID names in the BFS arr
+            for(int j=0;j<*curSize;j++) {
+                if(strcmp(bfs[*curSize].adjacentIDs[i],bfs[j].name)==0)
+                    notFound=0;
+            }
+            //If the current ID from the original arr is not found in BFS arr, add it to that arr
+            if(notFound){
+                bfs[*curSize] = og[i];
+                *curSize++; //Increment BFS arr size counter
+            }
+        }
+    }
 }
