@@ -104,6 +104,31 @@ void outputTXT1(Filename fn, AdjacencyList a[], int numVer){
     a. Name of Programmer(s):  Kristine Claire Gan
     b. Name of Tester(s)    :  
     c. Code Type -- 100% Human Generated 
+    d. Purpose: This function will sort the list of IDs in the given adjacency list array based
+    on alphabetical order.
+    e. Return: none
+    f. Parameters: @list is the array of adjacency lists, and @numVer is the number of vertices in the file
+*/
+void selsortList(AdjacencyList list[], int numVer){
+    AdjacencyList temp;
+
+    //Organize list based on alphabetical order
+    for(int i=0;i<numVer-1;i++){
+        int min = i;
+        for(int j=i+1;j<numVer;j++){
+            if(strcmp(list[min].name,list[j].name)==1)
+                min=j;
+        }
+        temp=list[min];
+        list[min]=list[i];
+        list[i]=temp;
+    }
+}
+
+/*
+    a. Name of Programmer(s):  Kristine Claire Gan
+    b. Name of Tester(s)    :  
+    c. Code Type -- 100% Human Generated 
     d. Purpose: This function will generate the expected output for the second output file.
     It sorts the list of vertices based on alphabetical order, and shows the number of
     adjacent IDs each vertex is connected to.
@@ -114,7 +139,7 @@ void outputTXT1(Filename fn, AdjacencyList a[], int numVer){
 void outputTXT2(Filename fn, AdjacencyList a[], int numVer){
     FILE* new2;
     Filename output2fn;
-    AdjacencyList output2List[numVer], temp;
+    AdjacencyList output2List[numVer];
     
     //Make a duplicate of the adjacency list array parameter
     for(int i=0;i<numVer;i++)
@@ -127,17 +152,8 @@ void outputTXT2(Filename fn, AdjacencyList a[], int numVer){
     //Open or create new text file for output file#2
     new2=fopen(output2fn,"w");
 
-    //Organize list based on alphabetical order
-    for(int i=0;i<numVer-1;i++){
-        int min = i;
-        for(int j=i+1;j<numVer;j++){
-            if(strcmp(output2List[min].name,output2List[j].name)==1)
-                min=j;
-        }
-        temp=output2List[min];
-        output2List[min]=output2List[i];
-        output2List[i]=temp;
-    }
+    //Call selection sort function
+    selsortList(output2List,numVer);
     
     //Print adjacency list info into output#2 file
     for(int i=0;i<numVer;i++)
