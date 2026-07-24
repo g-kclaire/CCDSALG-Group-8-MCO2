@@ -75,7 +75,7 @@ void getFilename(Filename fntxt, Filename *fn){
     c. Code Type -- 100% Human Generated 
     d. Purpose: This function will ...
     e. Return: 
-    f. Parameters: @fn is used for creating the output#3 filename, @a is the array of
+    f. Parameters: @fn is used for creating the output#1 filename, @a is the array of
     adjacency lists, and @numVer is the number of vertices in the file
 */
 void outputTXT1(Filename fn, AdjacencyList a[], int numVer){
@@ -186,7 +186,7 @@ void outputTXT3(Filename fn, AdjacencyList a[], int numVer){
     c. Code Type -- 100% Human Generated 
     d. Purpose: This function will ...
     e. Return: 
-    f. Parameters: @fn is used for creating the output#3 filename, @a is the array of
+    f. Parameters: @fn is used for creating the output#4 filename, @a is the array of
     adjacency lists, and @numVer is the number of vertices in the file
 */
 void outputTXT4(Filename fn, AdjacencyList a[], int numVer){
