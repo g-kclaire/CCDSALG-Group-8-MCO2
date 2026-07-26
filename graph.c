@@ -2,7 +2,7 @@
     Group #: 08  (2 digits)
 
     GAN, KRISTINE CLAIRE    S09
-    LASTNAME2, FIRSTNAME2  SECTION
+    MESA, MONICA R.         S09
     LASTNAME3, FIRSTNAME3  SECTION 
 
     PURPOSE OF THIS FILE: to show an example of a C source file that follows the coding guidelines/instructions.
@@ -70,37 +70,6 @@ void getFilename(Filename fntxt, Filename *fn){
 }
 
 /*
-    a. Name of Programmer(s):  Monica Mesa
-    b. Name of Tester(s)    :  
-    c. Code Type -- 100% Human Generated 
-    d. Purpose: This function will ...
-    e. Return: 
-    f. Parameters: @fn is used for creating the output#1 filename, @a is the array of
-    adjacency lists, and @numVer is the number of vertices in the file
-*/
-void outputTXT1(Filename fn, AdjacencyList a[], int numVer){
-    FILE* new1;
-    Filename output1fn;
-    /*--USE THESE IF YOU NEED TO REARRANGE/SORT THE ADJACENCY LIST ARRAY, DELETE IF NOT*/
-    // AdjacencyList output1List[numVer]; 
-    // /*Make a duplicate of the adjacency list array parameter*/
-    // for(int i=0;i<numVer;i++)
-    // 	output1List[i] = a[i];
-
-    //Generate output#1 name format
-    strcpy(output1fn,fn);
-    strcat(output1fn,"-SET.TXT");
-
-    //Open or create new text file for output file#1
-    new1=fopen(output1fn,"w");
-
-    /*--ADD FUNC CODES HERE*/
-
-    //Close file pointer
-    fclose(new1);
-}
-
-/*
     a. Name of Programmer(s):  Kristine Claire Gan
     b. Name of Tester(s)    :  
     c. Code Type -- 100% Human Generated 
@@ -116,13 +85,113 @@ void selsortList(AdjacencyList list[], int numVer){
     for(int i=0;i<numVer-1;i++){
         int min = i;
         for(int j=i+1;j<numVer;j++){
-            if(strcmp(list[min].name,list[j].name)==1)
+            if(strcmp(list[min].name,list[j].name)>0)
                 min=j;
         }
         temp=list[min];
         list[min]=list[i];
         list[i]=temp;
     }
+}
+
+/*
+    a. Name of Programmer(s):  Monica Mesa
+    b. Name of Tester(s)    :  
+    c. Code Type -- 100% Human Generated 
+    d. Purpose: This helper function will sort edges alphabetically by checking the starting
+                vertices, and checking the ending vertices if both starting vertices
+                are the same.
+    e. Return: none
+    f. Parameters: @fn is used for creating the output#1 filename, @a is the array of
+    adjacency lists, and @numVer is the number of vertices in the file
+*/
+void selSortEdges(AdjacencyList edgeList[], int numEdges)
+{
+    AdjacencyList temp;
+
+    //Organize list based on alphabetical order
+    for(int i=0;i<numEdges-1;i++){
+        int min = i;
+        for(int j=i+1;j<numEdges;j++){
+            if(strcmp(edgeList[min].name,edgeList[j].name)>0)
+                min=j;
+            if(strcmp(edgeList[min].adjacentIDs[0],edgeList[j].adjacentIDs[0])>0)
+                min=j;
+        }
+        temp=edgeList[min];
+        edgeList[min]=edgeList[i];
+        edgeList[i]=temp;
+    }
+}
+
+/*
+    a. Name of Programmer(s):  Monica Mesa
+    b. Name of Tester(s)    :  
+    c. Code Type -- 100% Human Generated 
+    d. Purpose: This function will provide the vertices and edges present in the provided graph via the TXT file.
+    e. Return: none
+    f. Parameters: @fn is used for creating the output#1 filename, @a is the array of
+    adjacency lists, and @numVer is the number of vertices in the file
+*/
+void outputTXT1(Filename fn, AdjacencyList a[], int numVer)
+{
+    FILE* new1;
+    Filename output1fn;
+
+    AdjacencyList output1List[numVer];
+    AdjacencyList edge1List[MAX_NUM_EDGES];
+    int numEdges=0;
+
+    /*Make a duplicate of the adjacency list array parameter*/
+    for(int i=0;i<numVer;i++)
+     	output1List[i] = a[i];
+
+    //Call selection sort function to sort list
+    selsortList(output1List,numVer);
+
+    //Duplicate adjacency list to get edges in list
+    for(int i=0;i<numVer;i++){
+        for(int j=0;j<output1List[i].numID;j++){
+            if(strcmp(output1List[i].name,output1List[i].adjacentIDs[j])<0){
+                strcpy(edge1List[numEdges].name,output1List[i].name);
+                strcpy(edge1List[numEdges].adjacentIDs[0], output1List[i].adjacentIDs[j]);
+                numEdges++;
+            }
+        }
+    }
+
+    //Call selection sort for edges
+    selSortEdges(edge1List,numEdges);
+
+    //Generate output#1 name format
+    strcpy(output1fn,fn);
+    strcat(output1fn,"-SET.TXT");
+
+    //Open or create new text file for output file#1
+    new1=fopen(output1fn,"w");
+
+    //Print Vertices
+    fprintf(new1,"V(G)={");
+    for(int i=0;i<numVer;i++)
+    {
+        if(i>0)
+            fprintf(new1,",");
+        fprintf(new1,"%s",output1List[i].name);
+    }
+    fprintf(new1,"}\n");
+
+    //Print Edges
+    fprintf(new1,"E(G)={");
+    for(int i=0;i<numEdges;i++)
+    {
+        if(i>0)
+            fprintf(new1,",");
+        fprintf(new1,"(%s,%s)",edge1List[i].name,edge1List[i].adjacentIDs[0]);
+    }
+    fprintf(new1,"}\n");
+
+    //Close file pointer
+    fclose(new1);
 }
 
 /*

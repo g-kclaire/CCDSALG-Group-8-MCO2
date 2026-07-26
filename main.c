@@ -2,7 +2,7 @@
     Group #: 08  (2 digits)
 
     GAN, KRISTINE CLAIRE    S09
-    LASTNAME2, FIRSTNAME2  SECTION
+    MESA, MONICA R.         S09
     LASTNAME3, FIRSTNAME3  SECTION 
 
     PURPOSE OF THIS FILE: to show an example of a C source file that follows the coding guidelines/instructions.
@@ -46,16 +46,18 @@ int main(){
     getFilename(fntxt,&fn);
 
     //Call output file funcs
-    outputTXT2(fn,a,numVer);
-    outputTXT3(fn,a,numVer);
+    outputTXT1(fn,a,numVer);
+    //outputTXT2(fn,a,numVer);
+    //outputTXT3(fn,a,numVer);
 
     //Test print results
-    for(int i=0;i<numVer;i++){
+    /*for(int i=0;i<numVer;i++){
         printf("%s - ",a[i].name);
         for(int j=0;j<a[i].numID;j++)
             printf("%s ",a[i].adjacentIDs[j]);
         printf("%d\n",a[i].numID);
-    }
+    }*/
+   printf("== Called OUTPUTTXT1 successfully ==\n");
     //Close the file
     fclose(fp);
     return 0;

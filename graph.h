@@ -2,7 +2,7 @@
     Group #: 08  (2 digits)
 
     GAN, KRISTINE CLAIRE    S09
-    LASTNAME2, FIRSTNAME2  SECTION
+    MESA, MONICA R.         S09
     LASTNAME3, FIRSTNAME3  SECTION 
 
     PURPOSE OF THIS FILE: to show an example of a C source file that follows the coding guidelines/instructions.
@@ -19,14 +19,15 @@
 #define DEFS_H // Include this to prevent redefinition error
 
 #define MAX_NUM_VERTICES    20
+#define MAX_NUM_EDGES       190
 #define FILE_NAME_SIZE		1
 
 typedef char ID[8];
 typedef char Filename[30];
 typedef struct{
-    ID name;
-    int numID;
-    ID adjacentIDs[MAX_NUM_VERTICES];
+    ID name; // name of vertex
+    int numID; // degree of vertex
+    ID adjacentIDs[MAX_NUM_VERTICES]; // list of adjacent vertices
 } AdjacencyList;
 
 void readSNSFile(char fileName[], AdjacencyList a[], FILE *fp, int *numVer);
