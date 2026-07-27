@@ -19,11 +19,12 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "graph.c"
+#include "graph.h"
 
 int main(){
     FILE* fp;
     Filename fntxt,fn;
+    ID startVertex;
     int numVer;
     AdjacencyList a[MAX_NUM_VERTICES];
 
@@ -51,6 +52,15 @@ int main(){
     outputTXT2(fn, a, numVer);
     outputTXT3(fn, a, numVer);
     outputTXT4(fn, a, numVer);
+
+    printf("Input start vertex for the traversal: ");
+    scanf("%8s", startVertex);
+
+    if (findVertexIndex(a, numVer, startVertex) == -1) {
+        printf("Vertex %s not found.\n", startVertex);
+    } else {
+        outputTXT5(fn, a, numVer, startVertex);
+    }
 
     //Close the file
     fclose(fp);

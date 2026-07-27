@@ -37,4 +37,7 @@ void outputTXT2(Filename fn, AdjacencyList a[], int numVer);
 void outputTXT3(Filename fn, AdjacencyList a[], int numVer);
 void outputTXT4(Filename fn, AdjacencyList a[], int numVer);
 
+int findVertexIndex(AdjacencyList a[], int numVer, ID vertexID);
+void outputTXT5(Filename fn, AdjacencyList a[], int numVer, ID startVertex);
+
 #endif //DEFS_H; //Include this to prevent redefinition error
