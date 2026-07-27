@@ -1,9 +1,9 @@
 /**
     Group #: 08  (2 digits)
 
-    GAN, KRISTINE CLAIRE    S09
-    MESA, MONICA    S09
-    VILLARIN, NICOLAI PAOLO  S09 
+    GAN, KRISTINE CLAIRE        S09
+    MESA, MONICA                S09
+    VILLARIN, NICOLAI PAOLO     S09 
 
     PURPOSE OF THIS FILE: to show an example of a C source file that follows the coding guidelines/instructions.
 
@@ -19,7 +19,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "graph.h"
+#include "graph.c"
+#include "traversal.c"
 
 int main(){
     FILE* fp;
