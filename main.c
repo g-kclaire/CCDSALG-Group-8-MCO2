@@ -2,8 +2,8 @@
     Group #: 08  (2 digits)
 
     GAN, KRISTINE CLAIRE    S09
-    MESA, MONICA R.         S09
-    LASTNAME3, FIRSTNAME3  SECTION 
+    MESA, MONICA    S09
+    VILLARIN, NICOLAI PAOLO  S09 
 
     PURPOSE OF THIS FILE: to show an example of a C source file that follows the coding guidelines/instructions.
 
@@ -25,39 +25,33 @@ int main(){
     FILE* fp;
     Filename fntxt,fn;
     int numVer;
+    AdjacencyList a[MAX_NUM_VERTICES];
+
 
     /*Get user input for filename of the input, and make sure inputted filename is exists.
     Terminate program if it does not. */
 	printf("Input filename (eg. <FILENAME>.txt): ");
-	scanf("%s",fntxt);
-    if((fp=fopen(fntxt,"r"))==0){
-        printf("File %s not found.\n",fntxt);
-        return 0;
-    }
+	scanf("%29s",fntxt);
 
-    //Get the number of vertices
-    fscanf(fp,"%d ",&numVer);
+    fp = fopen(fntxt, "r");
+    
+    if (fp == NULL) {
+    printf("File %s not found.\n", fntxt);
+    return 0;
+    }
     
     //Create array of adjacency lists with size of @numVer, and assign ID names to it
-    AdjacencyList a[numVer];
-    readSNSFile(fntxt,a,fp,&numVer);
+    readSNSFile(fntxt, a, fp, &numVer);
     
     //Call func to get filename w/o ".txt"
-    getFilename(fntxt,&fn);
+    getFilename(fntxt, &fn);
 
     //Call output file funcs
-    outputTXT1(fn,a,numVer);
-    //outputTXT2(fn,a,numVer);
-    //outputTXT3(fn,a,numVer);
+    outputTXT1(fn, a, numVer);
+    outputTXT2(fn, a, numVer);
+    outputTXT3(fn, a, numVer);
+    outputTxt4(fn, a, numVer);
 
-    //Test print results
-    /*for(int i=0;i<numVer;i++){
-        printf("%s - ",a[i].name);
-        for(int j=0;j<a[i].numID;j++)
-            printf("%s ",a[i].adjacentIDs[j]);
-        printf("%d\n",a[i].numID);
-    }*/
-   printf("== Called OUTPUTTXT1 successfully ==\n");
     //Close the file
     fclose(fp);
     return 0;

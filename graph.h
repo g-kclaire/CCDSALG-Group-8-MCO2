@@ -2,8 +2,8 @@
     Group #: 08  (2 digits)
 
     GAN, KRISTINE CLAIRE    S09
-    MESA, MONICA R.         S09
-    LASTNAME3, FIRSTNAME3  SECTION 
+    MESA, MONICA    S09
+    VILLARIN, NICOLAI PAOLO    S09 
 
     PURPOSE OF THIS FILE: to show an example of a C source file that follows the coding guidelines/instructions.
 
@@ -22,7 +22,7 @@
 #define MAX_NUM_EDGES       190
 #define FILE_NAME_SIZE		1
 
-typedef char ID[8];
+typedef char ID[9];
 typedef char Filename[30];
 typedef struct{
     ID name; // name of vertex

@@ -2,8 +2,8 @@
     Group #: 08  (2 digits)
 
     GAN, KRISTINE CLAIRE    S09
-    MESA, MONICA R.         S09
-    LASTNAME3, FIRSTNAME3  SECTION 
+    MESA, MONICA    S09
+    VILLARIN, NICOLAI PAOLO    S09 
 
     PURPOSE OF THIS FILE: to show an example of a C source file that follows the coding guidelines/instructions.
 
@@ -22,7 +22,7 @@
 #include "graph.h"
 
 /*
-    a. Name of Programmer(s):  Kristine Claire Gan
+    a. Name of Programmer(s):  Kristine Claire Gan, Nicolai Paolo Villarin
     b. Name of Tester(s)    :  
     c. Code Type -- 100% Human Generated 
     d. Purpose: This function will read in the IDs, the number of IDs, and their
@@ -33,7 +33,8 @@
     coming from the driver code, and @numVer is the number of vertices in the given file
 */
 void readSNSFile(char fileName[], AdjacencyList a[], FILE *fp, int *numVer) {
-    
+    (void)fileName;
+
     //Scan the current number of vertices
     fscanf(fp,"%d",numVer);
 
@@ -41,11 +42,11 @@ void readSNSFile(char fileName[], AdjacencyList a[], FILE *fp, int *numVer) {
     for(int i=0;i<*numVer;i++){
 
         //Read name of current adjacency list owner
-        fscanf(fp,"%s ",a[i].name);
+        fscanf(fp,"%8s ",a[i].name);
         int j=0;
 
         //Read list of IDs into the current adjacency list array
-        while(fscanf(fp,"%s",a[i].adjacentIDs[j])==1 && strcmp(a[i].adjacentIDs[j],"-1")){
+        while(j < MAX_NUM_VERTICES && fscanf(fp,"%8s",a[i].adjacentIDs[j])==1 && strcmp(a[i].adjacentIDs[j],"-1")){
             j++;
         }
         //Assign current ID tally to the variable of the number of IDs
@@ -54,7 +55,7 @@ void readSNSFile(char fileName[], AdjacencyList a[], FILE *fp, int *numVer) {
 }
 
 /*
-    a. Name of Programmer(s):  Kristine Claire Gan
+    a. Name of Programmer(s):  Kristine Claire Gan, Nicolai Paolo Villarin
     b. Name of Tester(s)    :  
     c. Code Type -- 100% Human Generated 
     d. Purpose: This function will get the name of the file w/o ".txt" based on user input.
@@ -63,10 +64,14 @@ void readSNSFile(char fileName[], AdjacencyList a[], FILE *fp, int *numVer) {
     the actual filename itself
 */
 void getFilename(Filename fntxt, Filename *fn){
+    int i = 0;
+    while (fntxt[i] != '\0' && fntxt[i] != '.' && i < (int)sizeof(Filename) - 1) 
+    {
+        (*fn)[i] = fntxt[i];
+        i++;
+    }
 
-    //Get name of file without ".txt"
-    strncpy(*fn,fntxt,FILE_NAME_SIZE);
-    strcat(*fn,"\0");
+    (*fn)[i] = '\0';
 }
 
 /*
@@ -271,29 +276,60 @@ void outputTXT3(Filename fn, AdjacencyList a[], int numVer){
     a. Name of Programmer(s):  Nicolai Paolo Villarin
     b. Name of Tester(s)    :  
     c. Code Type -- 100% Human Generated 
-    d. Purpose: This function will ...
-    e. Return: 
-    f. Parameters: @fn is used for creating the output#4 filename, @a is the array of
-    adjacency lists, and @numVer is the number of vertices in the file
+    d. Purpose: This function will generate the expected output for the fourth output file. 
+    It will create an adjacency matrix using the vertex IDs in the same order as they appeared in the input file.
+    e. Return: none
+    f. Parameters: @fn is used for creating the output#4 filename, @a is the
+    array of adjacency lists, and @numVer is the number of vertices in the file
+
 */
-void outputTXT4(Filename fn, AdjacencyList a[], int numVer){
-    FILE* new4;
+void outputTXT4(Filename fn, AdjacencyList a[], int numVer) {
+    FILE *new4;
     Filename output4fn;
-    /*--USE THESE IF YOU NEED TO REARRANGE/SORT THE ADJACENCY LIST ARRAY, DELETE IF NOT*/
-    // AdjacencyList output4List[numVer]; 
-    // //Make a duplicate of the adjacency list array parameter
-    // for(int i=0;i<numVer;i++)
-    // 	output4List[i] = a[i];
 
-    //Generate output#1 name format
-    strcpy(output4fn,fn);
-    strcat(output4fn,"-MATRIX.TXT");
+    strcpy(output4fn, fn);
+    strcat(output4fn, "-MATRIX.TXT");
 
-    //Open or create new text file for output file#4
-    new4=fopen(output4fn,"w");
+    new4 = fopen(output4fn, "w");
 
-    /*--ADD FUNC CODES HERE*/
+    if (new4 != NULL) {
+        /*
+            The matrix uses the same vertex order as the input file.
+            Each row searches its original adjacency list for the
+            corresponding column vertex.
+        */
 
-    //Close file pointer
-    fclose(new4);
+        /* Print column labels. */
+        for (int i = 0; i < numVer; i++) {
+            if (i > 0) {
+                fprintf(new4, " ");
+            }
+
+            fprintf(new4, "%s", a[i].name);
+        }
+
+        fprintf(new4, "\n");
+
+        /* Print matrix rows. */
+        for (int i = 0; i < numVer; i++) {
+            fprintf(new4, "%s", a[i].name);
+
+            for (int j = 0; j < numVer; j++) {
+                int connected = 0;
+
+                for (int k = 0; k < a[i].numID; k++) {
+                    if (strcmp(a[i].adjacentIDs[k], a[j].name) == 0) {
+                        connected = 1;
+                        break;
+                    }
+                }
+
+                fprintf(new4, " %d", connected);
+            }
+
+            fprintf(new4, "\n");
+        }
+
+        fclose(new4);
+    }
 }
