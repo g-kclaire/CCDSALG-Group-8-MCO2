@@ -98,25 +98,25 @@ void selsortList(AdjacencyList list[], int numVer){
     a. Name of Programmer(s):  Monica Mesa
     b. Name of Tester(s)    :  
     c. Code Type -- 100% Human Generated 
-    d. Purpose: This helper function will sort edges alphabetically by checking the starting
-                vertices, and checking the ending vertices if both starting vertices
-                are the same.
+    d. Purpose: This function will sort edges alphabetically by checking the starting
+                vertices. This will also check the ending vertices if both starting vertices are the same.
     e. Return: none
-    f. Parameters: @fn is used for creating the output#1 filename, @a is the array of
-    adjacency lists, and @numVer is the number of vertices in the file
+    f. Parameters: @edgeList is the array that stores the edges, 
+                   @numEdges is the number of edges present in the file
 */
 void selSortEdges(AdjacencyList edgeList[], int numEdges)
 {
-    AdjacencyList temp;
+    AdjacencyList temp; //temporarily stores index number
 
     //Organize list based on alphabetical order
     for(int i=0;i<numEdges-1;i++){
         int min = i;
         for(int j=i+1;j<numEdges;j++){
-            if(strcmp(edgeList[min].name,edgeList[j].name)>0)
+            if(strcmp(edgeList[min].name,edgeList[j].name)>0) //compares starting vertices
                 min=j;
-            if(strcmp(edgeList[min].adjacentIDs[0],edgeList[j].adjacentIDs[0])>0)
-                min=j;
+            else if(strcmp(edgeList[min].name,edgeList[j].name)==0) //check if starting vertices are the same
+                if(strcmp(edgeList[min].adjacentIDs[0],edgeList[j].adjacentIDs[0])>0) //compares ending vertices
+                    min=j;
         }
         temp=edgeList[min];
         edgeList[min]=edgeList[i];
@@ -128,10 +128,12 @@ void selSortEdges(AdjacencyList edgeList[], int numEdges)
     a. Name of Programmer(s):  Monica Mesa
     b. Name of Tester(s)    :  
     c. Code Type -- 100% Human Generated 
-    d. Purpose: This function will provide the vertices and edges present in the provided graph via the TXT file.
+    d. Purpose: This function will generate the expected output for the first output file.
+                It will provide the vertices and edges present in the provided graph via the TXT file.
     e. Return: none
-    f. Parameters: @fn is used for creating the output#1 filename, @a is the array of
-    adjacency lists, and @numVer is the number of vertices in the file
+    f. Parameters: @fn is used for creating the output#1 filename, 
+                   @a is the array of adjacency lists, and 
+                   @numVer is the number of vertices in the file
 */
 void outputTXT1(Filename fn, AdjacencyList a[], int numVer)
 {
@@ -149,12 +151,12 @@ void outputTXT1(Filename fn, AdjacencyList a[], int numVer)
     //Call selection sort function to sort list
     selsortList(output1List,numVer);
 
-    //Duplicate adjacency list to get edges in list
+    //Identifies list of edges & the number of edges present
     for(int i=0;i<numVer;i++){
         for(int j=0;j<output1List[i].numID;j++){
-            if(strcmp(output1List[i].name,output1List[i].adjacentIDs[j])<0){
+            if(strcmp(output1List[i].name,output1List[i].adjacentIDs[j])<0){ //ensures starting vertex comes before ending vertex 
                 strcpy(edge1List[numEdges].name,output1List[i].name);
-                strcpy(edge1List[numEdges].adjacentIDs[0], output1List[i].adjacentIDs[j]);
+                strcpy(edge1List[numEdges].adjacentIDs[0],output1List[i].adjacentIDs[j]);
                 numEdges++;
             }
         }
