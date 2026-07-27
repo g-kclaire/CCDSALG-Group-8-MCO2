@@ -50,7 +50,7 @@ int main(){
     outputTXT1(fn, a, numVer);
     outputTXT2(fn, a, numVer);
     outputTXT3(fn, a, numVer);
-    outputTxt4(fn, a, numVer);
+    outputTXt4(fn, a, numVer);
 
     //Close the file
     fclose(fp);
