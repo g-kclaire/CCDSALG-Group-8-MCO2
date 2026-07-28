@@ -1,9 +1,9 @@
 /**
     Group #: 08  (2 digits)
 
-    GAN, KRISTINE CLAIRE    S09
-    LASTNAME2, FIRSTNAME2  SECTION
-    LASTNAME3, FIRSTNAME3  SECTION 
+    GAN, KRISTINE CLAIRE        S09
+    MESA, MONICA                S09
+    VILLARIN, NICOLAI PAOLO     S09 
 
     PURPOSE OF THIS FILE: to show an example of a C source file that follows the coding guidelines/instructions.
 
@@ -65,28 +65,25 @@ void outputTXT5(Filename fn, AdjacencyList a[], int numVer, ID startVertex) {
     int traversalCount = 0;
     int startIndex = findVertexIndex(a, numVer, startVertex);
 
-    //Make a duplicate of the adjacency list array parameter
-    // for(int i=0;i<numVer;i++)
-    // 	output5List[i] = a[i];
-
     //Generate output#5 name format
     if (startIndex >= 0) {
-    strcpy(output5fn,fn);
-    strcat(output5fn,"-BFS.TXT");
+        strcpy(output5fn,fn);
+        strcat(output5fn,"-BFS.TXT");
 
-    //Open or create new text file for output file#3
-    new5=fopen(output5fn,"w");
-} else 
-{
-    new5 = NULL;
-}
+        //Open or create new text file for output file#5
+        new5=fopen(output5fn,"w");
+    } else 
+        new5 = NULL;
 
     if (new5 != NULL) {
+        //Mark selected start vertex as visited by assigning it with 1
         visited[startIndex] = 1;
+        //Assign index number of start vertex to first element in queue
         queue[rear] = startIndex;
         rear++;
 
         while (front < rear) {
+            //Assign index number of current vertex to queue and traversal arr
             int current = queue[front];
             front++;
 
@@ -100,6 +97,7 @@ void outputTXT5(Filename fn, AdjacencyList a[], int numVer, ID startVertex) {
             while (1) {
                 int nextIndex = -1;
 
+                //Scan through elements in adjacency list of current vertex
                 for (int j = 0; j < a[current].numID; j++) {
                     int candidate = findVertexIndex(
                         a,
@@ -107,6 +105,7 @@ void outputTXT5(Filename fn, AdjacencyList a[], int numVer, ID startVertex) {
                         a[current].adjacentIDs[j]
                     );
 
+                    //Check if index exists and has not been visited yet
                     if (candidate >= 0 && !visited[candidate]) {
                         if (nextIndex == -1 ||
                             strcmp(a[candidate].name,
@@ -137,4 +136,65 @@ void outputTXT5(Filename fn, AdjacencyList a[], int numVer, ID startVertex) {
         fprintf(new5, "\n");
         fclose(new5);
     }
+}
+
+AdjacencyList getAdjacencyList(AdjacencyList a[], ID name, int numVer){
+    AdjacencyList temp;
+
+    for(int i=0;i<numVer;i++)
+        if(strcmp(a[i].name, name)==0)
+            temp=a[i];
+
+    return temp;
+}
+
+void helperTXT6(AdjacencyList a[], AdjacencyList output6List[], int visited[], int numVer, int *list6Index, int start){
+    int nextIndex;
+	//Mark selected vertex as visited by assigning it with 1
+    visited[start]=1;
+    printf("%d %d\n",*list6Index,start);
+    output6List[*list6Index]=a[start];
+    *list6Index+=1;
+
+    for(int i=0;i<numVer;i++){
+        if(a[start].adjacentIDs[i] && visited[findVertexIndex(a,numVer,a[start].adjacentIDs[i])]==0){
+            printf("%s\n",a[start].adjacentIDs[i]);
+            nextIndex = findVertexIndex(a,numVer,a[start].adjacentIDs[i]);
+            helperTXT6(a,output6List,visited,numVer,list6Index,nextIndex);
+        }
+    }
+}
+
+void outputTXT6(Filename fn, AdjacencyList a[], int numVer, ID startVertex){
+    FILE* new6;
+    Filename output6fn;
+    AdjacencyList output6List[numVer];
+    int visited[numVer];
+    int startIndex = findVertexIndex(a, numVer, startVertex), list6Index=0;
+
+    //Generate output#6 name format
+    if (startIndex >= 0) {
+        strcpy(output6fn,fn);
+        strcat(output6fn,"-DFS.TXT");
+
+        //Open or create new text file for output file#6
+        new6=fopen(output6fn,"w");
+    } else 
+        new6 = NULL;
+
+    if(new6!=NULL)
+        helperTXT6(a,output6List,visited,numVer,&list6Index,startIndex);
+
+    //Print DFS values into file
+    for (int i = 0; i < numVer; i++) {
+            if (i > 0) {
+                fprintf(new6, " ");
+            }
+
+            fprintf(new6, "%s", output6List[i].name);
+        }
+
+    fprintf(new6, "\n");
+    //Close file pointer
+    fclose(new6);
 }
