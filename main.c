@@ -61,6 +61,7 @@ int main(){
         printf("Vertex %s not found.\n", startVertex);
     } else {
         outputTXT5(fn, a, numVer, startVertex);
+        outputTXT6(fn, a, numVer, startVertex);
     }
 
     //Close the file
