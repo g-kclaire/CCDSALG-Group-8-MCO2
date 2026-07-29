@@ -138,37 +138,84 @@ void outputTXT5(Filename fn, AdjacencyList a[], int numVer, ID startVertex) {
     }
 }
 
-AdjacencyList getAdjacencyList(AdjacencyList a[], ID name, int numVer){
-    AdjacencyList temp;
+/*
+    a. Name of Programmer(s):  Kristine Claire Gan
+    b. Name of Tester(s)    :  
+    c. Code Type -- 100% Human Generated 
+    d. Purpose: This function will sort the list of IDs in the given ID array based
+    on alphabetical order
+    e. Return: none
+    f. Parameters: @list is the array of IDs to be sorted, and @numID is the number 
+	of IDs in the list
+*/
+void selsortIDs(ID list[], int numID){
+	ID temp;
 
-    for(int i=0;i<numVer;i++)
-        if(strcmp(a[i].name, name)==0)
-            temp=a[i];
-
-    return temp;
+    //Organize list based on alphabetical order
+    for(int i=0;i<numID-1;i++){
+        int min = i;
+        for(int j=i+1;j<numID;j++){
+            if(strcmp(list[min],list[j])>0)
+                min=j;
+        }
+        
+        if(min!=i){
+	        strcpy(temp,list[min]);
+	        strcpy(list[min],list[i]);
+	        strcpy(list[i],temp);
+		}
+    }
 }
 
+/*
+    a. Name of Programmer(s):  Kristine Claire Gan
+    b. Name of Tester(s)    :  
+    c. Code Type -- 100% Human Generated 
+    d. Purpose: This function will traverse through the graph using the DFS algorithm.
+    It will begin at the given start index, and go through the entire graph until
+    all vertices have been visited.
+    e. Return: none
+    f. Parameters: @a is the graph, @output6List is where the DFS-based traversal is
+    stored, @visited is the array showing which vertices have been visited, @numVer is
+    the number of vertices in the graph, @*list6Index is the current index number in the
+    DFS traversal, and @start is the start index where the DFS traversal will begin
+*/
 void helperTXT6(AdjacencyList a[], AdjacencyList output6List[], int visited[], int numVer, int *list6Index, int start){
     int nextIndex;
+    
 	//Mark selected vertex as visited by assigning it with 1
     visited[start]=1;
-    printf("%d %d\n",*list6Index,start);
     output6List[*list6Index]=a[start];
     *list6Index+=1;
 
-    for(int i=0;i<numVer;i++){
+	//Scan through index of IDs of current vertex
+    for(int i=0;i<a[start].numID;i++){
         if(a[start].adjacentIDs[i] && visited[findVertexIndex(a,numVer,a[start].adjacentIDs[i])]==0){
-            printf("%s\n",a[start].adjacentIDs[i]);
+        	
+        	//Set new start index with index number of next adjacent ID
             nextIndex = findVertexIndex(a,numVer,a[start].adjacentIDs[i]);
+            
+            //Call function recursion for adjacent vertex ID
             helperTXT6(a,output6List,visited,numVer,list6Index,nextIndex);
         }
     }
 }
 
+/*
+    a. Name of Programmer(s):  Kristine Claire Gan
+    b. Name of Tester(s)    :  
+    c. Code Type -- 100% Human Generated 
+    d. Purpose: This function will generate the expected output for the sixth output file.
+    It creates a file based on the Depth Search graph traversal of the passed file.
+    e. Return: none
+    f. Parameters: @fn is used for creating the output#6 filename, @a is the array of
+    adjacency lists, and @numVer is the number of vertices in the file
+*/
 void outputTXT6(Filename fn, AdjacencyList a[], int numVer, ID startVertex){
     FILE* new6;
     Filename output6fn;
-    AdjacencyList output6List[numVer];
+//    AdjacencyList sortedList[numVer];
+	AdjacencyList output6List[numVer];
     int visited[numVer];
     int startIndex = findVertexIndex(a, numVer, startVertex), list6Index=0;
 
@@ -177,10 +224,14 @@ void outputTXT6(Filename fn, AdjacencyList a[], int numVer, ID startVertex){
         strcpy(output6fn,fn);
         strcat(output6fn,"-DFS.TXT");
 
-        //Open or create new text file for output file#6
+    	//Open or create new text file for output file#6
         new6=fopen(output6fn,"w");
     } else 
         new6 = NULL;
+    
+    //Sort the list of adjacent IDs based on alphabetical order
+    for(int i=0;i<numVer;i++)
+		selsortIDs(a[i].adjacentIDs,a[i].numID);
 
     if(new6!=NULL)
         helperTXT6(a,output6List,visited,numVer,&list6Index,startIndex);
