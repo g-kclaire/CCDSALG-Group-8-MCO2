@@ -300,6 +300,7 @@ void outputTXT4(Filename fn, AdjacencyList a[], int numVer) {
         */
 
         /* Print column labels. */
+        fprintf(new4, "\t ");
         for (int i = 0; i < numVer; i++) {
             if (i > 0) {
                 fprintf(new4, " ");
@@ -323,8 +324,8 @@ void outputTXT4(Filename fn, AdjacencyList a[], int numVer) {
                         break;
                     }
                 }
-
-                fprintf(new4, " %d", connected);
+                
+                fprintf(new4, " \t %d", connected);
             }
 
             fprintf(new4, "\n");
