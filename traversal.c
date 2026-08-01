@@ -219,6 +219,16 @@ void outputTXT6(Filename fn, AdjacencyList a[], int numVer, ID startVertex){
     int visited[numVer];
     int startIndex = findVertexIndex(a, numVer, startVertex), list6Index=0;
 
+    //Initialize all visited nodes to 0
+    for (int i = 0; i < numVer; i++) {
+        visited[i] = 0;
+    }
+
+    //Initialize all output6List to empty strings
+    for (int i = 0; i < numVer; i++) {
+        strcpy(output6List[i].name, ""); 
+    }
+
     //Generate output#6 name format
     if (startIndex >= 0) {
         strcpy(output6fn,fn);
