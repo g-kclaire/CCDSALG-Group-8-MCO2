@@ -45,7 +45,7 @@ int findVertexIndex(AdjacencyList a[], int numVer, ID vertexID) {
 
 /*
     a. Name of Programmer(s):  Kristine Claire Gan, Nicolai Paolo Villarin
-    b. Name of Tester(s)    :  
+    b. Name of Tester(s)    :  Monica Mesa
     c. Code Type -- 100% Human Generated 
     d. Purpose: This function will generate the expected output for the fifth
     output file. It will perform a Breadth First Search starting from the 
@@ -203,7 +203,7 @@ void helperTXT6(AdjacencyList a[], AdjacencyList output6List[], int visited[], i
 
 /*
     a. Name of Programmer(s):  Kristine Claire Gan
-    b. Name of Tester(s)    :  
+    b. Name of Tester(s)    :  Monica Mesa
     c. Code Type -- 100% Human Generated 
     d. Purpose: This function will generate the expected output for the sixth output file.
     It creates a file based on the Depth Search graph traversal of the passed file.

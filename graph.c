@@ -23,7 +23,7 @@
 
 /*
     a. Name of Programmer(s):  Kristine Claire Gan, Nicolai Paolo Villarin
-    b. Name of Tester(s)    :  
+    b. Name of Tester(s)    :  Monica Mesa
     c. Code Type -- 100% Human Generated 
     d. Purpose: This function will read in the IDs, the number of IDs, and their
     respective list of adjacent IDs written in the given text file.
@@ -56,7 +56,7 @@ void readSNSFile(char fileName[], AdjacencyList a[], FILE *fp, int *numVer) {
 
 /*
     a. Name of Programmer(s):  Kristine Claire Gan, Nicolai Paolo Villarin
-    b. Name of Tester(s)    :  
+    b. Name of Tester(s)    :  Monica Mesa
     c. Code Type -- 100% Human Generated 
     d. Purpose: This function will get the name of the file w/o ".txt" based on user input.
     e. Return: none
@@ -203,7 +203,7 @@ void outputTXT1(Filename fn, AdjacencyList a[], int numVer)
 
 /*
     a. Name of Programmer(s):  Kristine Claire Gan
-    b. Name of Tester(s)    :  
+    b. Name of Tester(s)    :  Monica Mesa
     c. Code Type -- 100% Human Generated 
     d. Purpose: This function will generate the expected output for the second output file.
     It sorts the list of vertices based on alphabetical order, and shows the number of
@@ -241,7 +241,7 @@ void outputTXT2(Filename fn, AdjacencyList a[], int numVer){
 
 /*
     a. Name of Programmer(s):  Kristine Claire Gan
-    b. Name of Tester(s)    :  
+    b. Name of Tester(s)    :  Monica Mesa
     c. Code Type -- 100% Human Generated 
     d. Purpose: This function will generate the expected output for the third output file.
     It prints out the adjacency list per vertex.
@@ -274,7 +274,7 @@ void outputTXT3(Filename fn, AdjacencyList a[], int numVer){
 
 /*
     a. Name of Programmer(s):  Nicolai Paolo Villarin
-    b. Name of Tester(s)    :  
+    b. Name of Tester(s)    :  Monica Mesa
     c. Code Type -- 100% Human Generated 
     d. Purpose: This function will generate the expected output for the fourth output file. 
     It will create an adjacency matrix using the vertex IDs in the same order as they appeared in the input file.
