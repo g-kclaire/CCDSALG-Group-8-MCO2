@@ -131,7 +131,7 @@ void selSortEdges(AdjacencyList edgeList[], int numEdges)
 
 /*
     a. Name of Programmer(s):  Monica Mesa
-    b. Name of Tester(s)    :  
+    b. Name of Tester(s)    :  Kristine Claire Gan
     c. Code Type -- 100% Human Generated 
     d. Purpose: This function will generate the expected output for the first output file.
                 It will provide the vertices and edges present in the provided graph via the TXT file.

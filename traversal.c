@@ -22,7 +22,7 @@
 
 /*
     a. Name of Programmer(s):  Nicolai Paolo Villarin
-    b. Name of Tester(s)    :  
+    b. Name of Tester(s)    :  Kristine Claire Gan
     c. Code Type -- 100% Human Generated 
     d. Purpose: This function will search for a vertex ID in the adjacency-list array 
     and return its corresponding array index.
@@ -202,8 +202,8 @@ void helperTXT6(AdjacencyList a[], AdjacencyList output6List[], int visited[], i
 }
 
 /*
-    a. Name of Programmer(s):  Kristine Claire Gan
-    b. Name of Tester(s)    :  Monica Mesa
+    a. Name of Programmer(s):  Kristine Claire Gan and Monica Mesa
+    b. Name of Tester(s)    :  
     c. Code Type -- 100% Human Generated 
     d. Purpose: This function will generate the expected output for the sixth output file.
     It creates a file based on the Depth Search graph traversal of the passed file.
