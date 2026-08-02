@@ -1,0 +1,2 @@
+V(C)={Akaashi,Asahi,Bokuto,Daichi,Enoshita,Hinata,Iwaizumi,Kageyama,Kenma,Kiyoko,Kuroo,Noya,Oikawa,Sensei,Suga,Tadashi,Tanaka,Tsuki,Ukai-san,Yachi}
+E(C)={(Akaashi,Bokuto),(Asahi,Daichi),(Asahi,Kiyoko),(Asahi,Noya),(Asahi,Suga),(Bokuto,Hinata),(Daichi,Enoshita),(Daichi,Kiyoko),(Daichi,Suga),(Enoshita,Noya),(Enoshita,Tanaka),(Hinata,Kageyama),(Hinata,Kenma),(Hinata,Noya),(Hinata,Sensei),(Hinata,Tanaka),(Hinata,Yachi),(Iwaizumi,Oikawa),(Kageyama,Oikawa),(Kageyama,Tsuki),(Kenma,Kuroo),(Kiyoko,Suga),(Kiyoko,Yachi),(Noya,Tanaka),(Sensei,Ukai-san),(Tadashi,Tsuki)}

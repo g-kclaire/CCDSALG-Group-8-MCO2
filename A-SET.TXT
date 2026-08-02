@@ -1,0 +1,2 @@
+V(A)={Bruce,Natasha,Peter,Steve,Tony}
+E(A)={(Bruce,Natasha),(Bruce,Peter),(Natasha,Steve),(Peter,Tony),(Steve,Tony)}

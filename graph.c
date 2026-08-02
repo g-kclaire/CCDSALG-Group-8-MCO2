@@ -178,7 +178,7 @@ void outputTXT1(Filename fn, AdjacencyList a[], int numVer)
     new1=fopen(output1fn,"w");
 
     //Print Vertices
-    fprintf(new1,"V(G)={");
+    fprintf(new1,"V(%s)={", fn);
     for(int i=0;i<numVer;i++)
     {
         if(i>0)
@@ -188,7 +188,7 @@ void outputTXT1(Filename fn, AdjacencyList a[], int numVer)
     fprintf(new1,"}\n");
 
     //Print Edges
-    fprintf(new1,"E(G)={");
+    fprintf(new1,"E(%s)={", fn);
     for(int i=0;i<numEdges;i++)
     {
         if(i>0)

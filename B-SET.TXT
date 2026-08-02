@@ -1,0 +1,2 @@
+V(B)={Aha,Ayy,Brb,Idk,Ikr,Lol,Nah,Oof,Smh,Tbh}
+E(B)={(Aha,Nah),(Ayy,Idk),(Ayy,Lol),(Brb,Lol),(Brb,Oof),(Idk,Smh),(Ikr,Tbh),(Nah,Oof),(Smh,Tbh)}

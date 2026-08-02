@@ -1,0 +1,10 @@
+Aha->Nah->\
+Nah->Aha->Oof->\
+Oof->Nah->Brb->\
+Brb->Oof->Lol->\
+Lol->Brb->Ayy->\
+Ayy->Lol->Idk->\
+Idk->Ayy->Smh->\
+Smh->Idk->Tbh->\
+Tbh->Smh->Ikr->\
+Ikr->Tbh->\

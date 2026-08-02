@@ -32,7 +32,7 @@ int main(){
 
     /*Get user input for filename of the input, and make sure inputted filename is exists.
     Terminate program if it does not. */
-	printf("Input filename (eg. <FILENAME>.txt): ");
+	printf("Input filename: ");
 	scanf("%29s",fntxt);
 
     fp = fopen(fntxt, "r");

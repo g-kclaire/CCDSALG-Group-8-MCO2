@@ -1,0 +1,11 @@
+	 Aha Nah Oof Brb Lol Ayy Idk Smh Tbh Ikr
+Aha 	 0 	 1 	 0 	 0 	 0 	 0 	 0 	 0 	 0 	 0
+Nah 	 1 	 0 	 1 	 0 	 0 	 0 	 0 	 0 	 0 	 0
+Oof 	 0 	 1 	 0 	 1 	 0 	 0 	 0 	 0 	 0 	 0
+Brb 	 0 	 0 	 1 	 0 	 1 	 0 	 0 	 0 	 0 	 0
+Lol 	 0 	 0 	 0 	 1 	 0 	 1 	 0 	 0 	 0 	 0
+Ayy 	 0 	 0 	 0 	 0 	 1 	 0 	 1 	 0 	 0 	 0
+Idk 	 0 	 0 	 0 	 0 	 0 	 1 	 0 	 1 	 0 	 0
+Smh 	 0 	 0 	 0 	 0 	 0 	 0 	 1 	 0 	 1 	 0
+Tbh 	 0 	 0 	 0 	 0 	 0 	 0 	 0 	 1 	 0 	 1
+Ikr 	 0 	 0 	 0 	 0 	 0 	 0 	 0 	 0 	 1 	 0

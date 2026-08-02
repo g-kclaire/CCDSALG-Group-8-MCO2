@@ -1,0 +1,6 @@
+	 Peter Tony Steve Natasha Bruce
+Peter 	 0 	 1 	 0 	 0 	 1
+Tony 	 1 	 0 	 1 	 0 	 0
+Steve 	 0 	 1 	 0 	 1 	 0
+Natasha 	 0 	 0 	 1 	 0 	 1
+Bruce 	 1 	 0 	 0 	 1 	 0

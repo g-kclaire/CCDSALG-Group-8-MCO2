@@ -140,7 +140,7 @@ void outputTXT5(Filename fn, AdjacencyList a[], int numVer, ID startVertex) {
 
 /*
     a. Name of Programmer(s):  Kristine Claire Gan
-    b. Name of Tester(s)    :  
+    b. Name of Tester(s)    :  Nicolai Paolo Villarin
     c. Code Type -- 100% Human Generated 
     d. Purpose: This function will sort the list of IDs in the given ID array based
     on alphabetical order
@@ -169,7 +169,7 @@ void selsortIDs(ID list[], int numID){
 
 /*
     a. Name of Programmer(s):  Kristine Claire Gan
-    b. Name of Tester(s)    :  
+    b. Name of Tester(s)    :  Nicolai Paolo Villarin
     c. Code Type -- 100% Human Generated 
     d. Purpose: This function will traverse through the graph using the DFS algorithm.
     It will begin at the given start index, and go through the entire graph until
@@ -190,20 +190,30 @@ void helperTXT6(AdjacencyList a[], AdjacencyList output6List[], int visited[], i
 
 	//Scan through index of IDs of current vertex
     for(int i=0;i<a[start].numID;i++){
-        if(a[start].adjacentIDs[i] && visited[findVertexIndex(a,numVer,a[start].adjacentIDs[i])]==0){
-        	
-        	//Set new start index with index number of next adjacent ID
-            nextIndex = findVertexIndex(a,numVer,a[start].adjacentIDs[i]);
-            
-            //Call function recursion for adjacent vertex ID
-            helperTXT6(a,output6List,visited,numVer,list6Index,nextIndex);
-        }
+        for (int i = 0; i < a[start].numID; i++) {
+    nextIndex = findVertexIndex(
+        a,
+        numVer,
+        a[start].adjacentIDs[i]
+    );
+
+    if (nextIndex >= 0 && visited[nextIndex] == 0) {
+        helperTXT6(
+            a,
+            output6List,
+            visited,
+            numVer,
+            list6Index,
+            nextIndex
+        );
+    }
+}
     }
 }
 
 /*
     a. Name of Programmer(s):  Kristine Claire Gan and Monica Mesa
-    b. Name of Tester(s)    :  
+    b. Name of Tester(s)    :  Nicolai Paolo Villarin
     c. Code Type -- 100% Human Generated 
     d. Purpose: This function will generate the expected output for the sixth output file.
     It creates a file based on the Depth Search graph traversal of the passed file.
