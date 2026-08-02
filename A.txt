@@ -1,0 +1,6 @@
+5
+Peter Tony Bruce -1
+Tony Peter Steve -1
+Steve Tony Natasha -1
+Natasha Steve Bruce -1
+Bruce Peter Natasha -1
