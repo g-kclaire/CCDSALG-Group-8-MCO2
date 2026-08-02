@@ -253,17 +253,17 @@ void outputTXT6(Filename fn, AdjacencyList a[], int numVer, ID startVertex){
     for(int i=0;i<numVer;i++)
 		selsortIDs(a[i].adjacentIDs,a[i].numID);
 
-    if(new6!=NULL)
+    if(new6!=NULL){
         helperTXT6(a,output6List,visited,numVer,&list6Index,startIndex);
-
-    //Print DFS values into file
-    for (int i = 0; i < numVer; i++) {
+            //Print DFS values into file
+    for (int i = 0; i < list6Index; i++) {
             if (i > 0) {
                 fprintf(new6, " ");
             }
 
             fprintf(new6, "%s", output6List[i].name);
         }
+    }
 
     fprintf(new6, "\n");
     //Close file pointer

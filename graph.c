@@ -46,7 +46,7 @@ void readSNSFile(char fileName[], AdjacencyList a[], FILE *fp, int *numVer) {
         int j=0;
 
         //Read list of IDs into the current adjacency list array
-        while(j <= MAX_NUM_VERTICES && fscanf(fp,"%8s",a[i].adjacentIDs[j])==1 && strcmp(a[i].adjacentIDs[j],"-1")){
+        while(j < MAX_NUM_VERTICES && fscanf(fp,"%8s",a[i].adjacentIDs[j])==1 && strcmp(a[i].adjacentIDs[j],"-1")){
             j++;
         }
         //Assign current ID tally to the variable of the number of IDs
