@@ -76,7 +76,7 @@ void getFilename(Filename fntxt, Filename *fn){
 
 /*
     a. Name of Programmer(s):  Kristine Claire Gan
-    b. Name of Tester(s)    :  
+    b. Name of Tester(s)    :  Nicolai Paolo Villarin
     c. Code Type -- 100% Human Generated 
     d. Purpose: This function will sort the list of IDs in the given adjacency list array based
     on alphabetical order.
@@ -101,7 +101,7 @@ void selsortList(AdjacencyList list[], int numVer){
 
 /*
     a. Name of Programmer(s):  Monica Mesa
-    b. Name of Tester(s)    :  
+    b. Name of Tester(s)    :  Nicolai Paolo Villarin
     c. Code Type -- 100% Human Generated 
     d. Purpose: This function will sort edges alphabetically by checking the starting
                 vertices. This will also check the ending vertices if both starting vertices are the same.
